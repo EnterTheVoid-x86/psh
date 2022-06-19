@@ -6,15 +6,6 @@ import socket
 import platform
 import sys
 
-if sys.argv[1] == "--uninstall":
-	uninst = input("Are you sure? (y/n)")
-	if uninst == "y":
-		print("Uninstalling...")
-		if platform.system() == "Windows":
-			os.system("del psh.py")
-		else:
-			os.system("rm psh.py")
-		print("Uninstall completed.")
 print("Welcome to psh, the open-source shell made in python.")
 
 username = os.getlogin()
