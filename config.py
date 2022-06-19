@@ -2,4 +2,4 @@
 ascii = "enabled"
 greeting = "Welcome to psh, the open-source shell made in python."
 prompt = " λ "
-debug = True
+debug = False
