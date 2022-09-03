@@ -1,10 +1,20 @@
+# psh v2.1, rsh ported to python
+# created by etvx86
 import sys
 import os
 import socket
 import platform
-from config import *
-# psh v2.1, rsh ported to python
-# created by etvx86
+import traceback
+try:
+    from config import *
+except ModuleNotFoundError as moderror:
+    print("psh init panic: ")
+    print(moderror)
+    print("stack trace:")
+    traceback.print_exc()
+    print("----=(end psh init panic:)=----")
+    print(moderror)
+    sys.exit()
 
 try:    
     if sys.argv[1] == "--no-logo":
