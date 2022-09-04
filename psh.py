@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # psh v2.1, rsh ported to python
 # created by etvx86
 import sys
@@ -5,6 +6,7 @@ import os
 import socket
 import platform
 import traceback
+import subprocess
 try:
     from config import *
 except ModuleNotFoundError as moderror:
@@ -142,7 +144,16 @@ def main():
                 except IndexError:
                     print("Please input a directory.")
             else:
-                os.system(shell)
+                try:
+                    process = subprocess.Popen(sharray, universal_newlines=True, bufsize=1)
+                    process.wait()
+                    print("psh: the process exited with code", process.returncode, process.communicate())
+                except FileNotFoundError:
+                    print("psh: command not found")
+                except PermissionError:
+                    print("psh: permission denied")
+                except OSError:
+                    print("psh: Exec format error")
     except KeyboardInterrupt:
         print("")
         main()
